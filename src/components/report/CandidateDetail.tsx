@@ -1,5 +1,6 @@
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
+import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
 import {
   CheckCircle,
   AlertTriangle,
@@ -11,6 +12,7 @@ import {
   Zap,
   Target,
   CircleDot,
+  Lightbulb,
 } from "lucide-react";
 import type { SynthesisCandidate } from "@/data/mockSynthesisData";
 
