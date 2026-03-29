@@ -37,7 +37,7 @@ const RosterPanel = ({ candidates, onCandidatesChange }: RosterPanelProps) => {
     onCandidatesChange(candidates.filter((c) => c.id !== id));
   };
 
-  const updateCandidate = (id: string, field: keyof Candidate, value: string) => {
+  const updateCandidate = (id: string, field: keyof Candidate, value: string | File) => {
     onCandidatesChange(
       candidates.map((c) => (c.id === id ? { ...c, [field]: value } : c))
     );
@@ -48,16 +48,20 @@ const RosterPanel = ({ candidates, onCandidatesChange }: RosterPanelProps) => {
       e.preventDefault();
       const file = e.dataTransfer.files[0];
       if (file?.type === "application/pdf") {
-        updateCandidate(id, "fileName", file.name);
+        onCandidatesChange(
+          candidates.map((c) => (c.id === id ? { ...c, fileName: file.name, file } : c))
+        );
       }
     },
-    [candidates]
+    [candidates, onCandidatesChange]
   );
 
   const handleFileSelect = (id: string, e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
-      updateCandidate(id, "fileName", file.name);
+      onCandidatesChange(
+        candidates.map((c) => (c.id === id ? { ...c, fileName: file.name, file } : c))
+      );
     }
   };
 
