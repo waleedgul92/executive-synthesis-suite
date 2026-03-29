@@ -193,9 +193,7 @@ const CandidateDetail = ({ candidate }: CandidateDetailProps) => {
                     <CircleDot className="w-4 h-4 text-primary" />
                     <h4 className="text-xs font-semibold tracking-wider uppercase text-primary">Ideal Pairing</h4>
                   </div>
-                  <p className="text-sm font-medium text-foreground">{c.idealPairing.name}</p>
-                  <p className="text-[11px] text-muted-foreground mb-2">{c.idealPairing.title}</p>
-                  <p className="text-sm text-foreground/70 leading-relaxed">{c.idealPairing.rationale}</p>
+                  <p className="text-sm text-foreground/70 leading-relaxed">{c.idealPairing}</p>
                 </div>
               )}
               {c.toxicPairing && (
@@ -204,9 +202,7 @@ const CandidateDetail = ({ candidate }: CandidateDetailProps) => {
                     <AlertTriangle className="w-4 h-4 text-amber-600" />
                     <h4 className="text-xs font-semibold tracking-wider uppercase text-amber-700">Toxic Pairing</h4>
                   </div>
-                  <p className="text-sm font-medium text-foreground">{c.toxicPairing.name}</p>
-                  <p className="text-[11px] text-muted-foreground mb-2">{c.toxicPairing.title}</p>
-                  <p className="text-sm text-foreground/70 leading-relaxed">{c.toxicPairing.rationale}</p>
+                  <p className="text-sm text-foreground/70 leading-relaxed">{c.toxicPairing}</p>
                 </div>
               )}
             </div>
