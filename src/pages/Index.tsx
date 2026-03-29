@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
 import EnvironmentPanel from "@/components/EnvironmentPanel";
 import RosterPanel, { type Candidate } from "@/components/RosterPanel";
@@ -6,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Loader2, Zap } from "lucide-react";
 
 const Index = () => {
+  const navigate = useNavigate();
   const [mandate, setMandate] = useState("");
   const [candidates, setCandidates] = useState<Candidate[]>([
     { id: crypto.randomUUID(), name: "", sourcingType: "", fileName: "" },
@@ -14,8 +16,10 @@ const Index = () => {
 
   const handleRunSynthesis = async () => {
     setIsLoading(true);
-    // Simulate loading — replace with actual n8n webhook call
-    setTimeout(() => setIsLoading(false), 3000);
+    setTimeout(() => {
+      setIsLoading(false);
+      navigate("/report");
+    }, 2000);
   };
 
   return (
