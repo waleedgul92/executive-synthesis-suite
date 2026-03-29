@@ -15,8 +15,7 @@ export interface Candidate {
   id: string;
   name: string;
   sourcingType: string;
-  fileName: string;
-  fileObject?: File;
+  cvText: string;
 }
 
 interface RosterPanelProps {
