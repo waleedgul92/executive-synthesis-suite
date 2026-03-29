@@ -1,12 +1,11 @@
 import { Shield } from "lucide-react";
+import bmwLogo from "@/assets/bmw-logo.png";
 
 const Header = () => {
   return (
     <header className="flex items-center justify-between px-6 py-3 border-b border-border bg-card/80 backdrop-blur-sm">
       <div className="flex items-center gap-3">
-        <div className="w-8 h-8 rounded bg-electric/20 border border-electric/30 flex items-center justify-center">
-          <Shield className="w-4 h-4 text-electric" />
-        </div>
+        <img src={bmwLogo} alt="BMW Group" className="w-8 h-8 object-contain" />
         <h1 className="text-sm font-semibold tracking-wide text-foreground">
           Executive Decision Matrix
         </h1>
