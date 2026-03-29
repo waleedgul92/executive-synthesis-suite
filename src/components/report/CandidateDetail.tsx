@@ -1,5 +1,6 @@
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
+import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
 import {
   CheckCircle,
   AlertTriangle,
@@ -11,6 +12,7 @@ import {
   Zap,
   Target,
   CircleDot,
+  Lightbulb,
 } from "lucide-react";
 import type { SynthesisCandidate } from "@/data/mockSynthesisData";
 
@@ -132,6 +134,18 @@ const CandidateDetail = ({ candidate }: CandidateDetailProps) => {
               <p className="text-sm text-foreground/70 leading-relaxed">{c.toxicPairing.rationale}</p>
             </div>
           </div>
+        </section>
+
+        {/* Section: Strategic Placement Advice */}
+        <section>
+          <SectionHeader icon={Lightbulb} label="Strategic Placement Advice" />
+          <Alert className="mt-3 border-primary/20 bg-primary/5">
+            <Lightbulb className="h-4 w-4 text-primary" />
+            <AlertTitle className="text-sm font-semibold text-foreground">Placement Recommendation</AlertTitle>
+            <AlertDescription className="text-sm text-foreground/75 leading-relaxed mt-1">
+              {c.strategicPlacementAdvice}
+            </AlertDescription>
+          </Alert>
         </section>
 
         {/* Section 4: Explainability Audit Trail */}

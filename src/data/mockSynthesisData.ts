@@ -14,6 +14,7 @@ export interface SynthesisCandidate {
   idealPairing: { name: string; title: string; rationale: string };
   toxicPairing: { name: string; title: string; rationale: string };
   auditTrail: { claim: string; evidence: string; impact: string }[];
+  strategicPlacementAdvice: string;
   missingData: string[];
   interviewProbes: string[];
 }
@@ -74,6 +75,7 @@ export const mockCandidates: SynthesisCandidate[] = [
         impact: "Essential capability for managing the projected workforce transition in the EV pivot.",
       },
     ],
+    strategicPlacementAdvice: "Dr. Voss is best positioned as a transformation-stage leader. Her optimal deployment window is during the first 18 months of the NEUE KLASSE operational rollout, where her cross-industry scaling expertise will have maximum impact. Consider pairing her appointment with a structured 90-day immersion in BMW's regulatory and union landscape to mitigate her primary blind spots. If the Board's priority shifts to steady-state optimization rather than transformation, her profile becomes significantly less advantageous.",
     missingData: [
       "No 360-degree leadership assessment on file — psychometric profile unavailable",
       "Compensation expectations and non-compete clause status from Siemens not disclosed",
@@ -135,6 +137,7 @@ export const mockCandidates: SynthesisCandidate[] = [
         impact: "Claim appears inflated. Recommend direct verification with GM references before proceeding.",
       },
     ],
+    strategicPlacementAdvice: "Whitfield should only be considered if the Board's primary mandate is US-market expansion or transatlantic supply chain integration. His profile carries significant integration risk in a European-headquartered role. If selected, a mandatory 6-month co-leadership transition with an internal BMW executive is strongly recommended to bridge cultural and regulatory gaps. Delay risk from non-compete enforcement must be factored into timeline planning.",
     missingData: [
       "Non-compete clause terms and enforceability in German jurisdiction not assessed",
       "No European work authorization status confirmed",
@@ -197,6 +200,7 @@ export const mockCandidates: SynthesisCandidate[] = [
         impact: "Continuity advantage — minimal onboarding time. Risk: may perpetuate existing strategic blind spots.",
       },
     ],
+    strategicPlacementAdvice: "Dr. Mayer represents the lowest-risk, highest-continuity option. He is ideally suited if the Board values institutional stability and stakeholder confidence over transformational disruption. His appointment would signal strategic continuity to investors and IG Metall alike. However, the Board should commission an independent external leadership assessment to validate his operational readiness — his strategy-only career track is the single largest uncertainty in his profile.",
     missingData: [
       "No external leadership assessment — all evaluations are internal BMW HR reviews",
       "No data on candidate's willingness to relocate if role requires presence in new plant locations",
