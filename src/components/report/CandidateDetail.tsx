@@ -66,18 +66,21 @@ const CandidateDetail = ({ candidate }: CandidateDetailProps) => {
 
       <div className="p-6 space-y-6">
         {/* Score Breakdown */}
-        {(c.technicalFitScore != null || c.leadershipTraitsScore != null || c.riskResilienceScore != null || c.culturalAlignmentScore != null) && (
+        {(c.technicalFitScore != null || c.leadershipTraitsScore != null || c.riskResilienceScore != null || c.culturalAlignmentScore != null || c.baselineFit != null || c.scenarioRisk != null || c.aiConfidence != null) && (
           <section>
             <SectionHeader icon={BarChart3} label="Assessment Score Breakdown" />
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-3">
-              <ScoreCard label="Technical Fit" value={c.technicalFitScore} />
-              <ScoreCard label="Leadership Traits" value={c.leadershipTraitsScore} />
-              <ScoreCard label="Risk Resilience" value={c.riskResilienceScore} />
-              <ScoreCard label="Cultural Alignment" value={c.culturalAlignmentScore} />
-            </div>
-            <div className="grid grid-cols-2 gap-3 mt-3">
+            {(c.technicalFitScore != null || c.leadershipTraitsScore != null || c.riskResilienceScore != null || c.culturalAlignmentScore != null) && (
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-3">
+                <ScoreCard label="Technical Fit" value={c.technicalFitScore} />
+                <ScoreCard label="Leadership Traits" value={c.leadershipTraitsScore} />
+                <ScoreCard label="Risk Resilience" value={c.riskResilienceScore} />
+                <ScoreCard label="Cultural Alignment" value={c.culturalAlignmentScore} />
+              </div>
+            )}
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mt-3">
               <ScoreCard label="Baseline Fit" value={c.baselineFit} />
-              <ScoreCard label="Scenario Score" value={c.scenarioRisk} />
+              <ScoreCard label="Execution Risk" value={c.scenarioRisk} />
+              <ScoreCard label="AI Confidence" value={c.aiConfidence} />
             </div>
           </section>
         )}
