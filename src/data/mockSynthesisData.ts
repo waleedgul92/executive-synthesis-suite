@@ -137,6 +137,7 @@ export const mockCandidates: SynthesisCandidate[] = [
         impact: "Claim appears inflated. Recommend direct verification with GM references before proceeding.",
       },
     ],
+    strategicPlacementAdvice: "Whitfield should only be considered if the Board's primary mandate is US-market expansion or transatlantic supply chain integration. His profile carries significant integration risk in a European-headquartered role. If selected, a mandatory 6-month co-leadership transition with an internal BMW executive is strongly recommended to bridge cultural and regulatory gaps. Delay risk from non-compete enforcement must be factored into timeline planning.",
     missingData: [
       "Non-compete clause terms and enforceability in German jurisdiction not assessed",
       "No European work authorization status confirmed",
