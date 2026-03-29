@@ -11,11 +11,11 @@ export interface SynthesisCandidate {
   scenarioRiskRating: number;
   scenarioStrengths: string[];
   blindSpots: string[];
-  idealPairing?: { name: string; title: string; rationale: string };
-  toxicPairing?: { name: string; title: string; rationale: string };
-  auditTrail?: { claim: string; evidence: string; impact: string }[];
+  idealPairing?: string;
+  toxicPairing?: string;
+  auditTrail?: { claim: string; evidence_from_cv: string; impact_on_scenario: string }[];
   strategicPlacementAdvice: string;
-  missingData: string[];
+  missingData: string | string[];
   interviewProbes: string[];
   // New fields from n8n webhook
   scenarioTitle?: string;
@@ -53,21 +53,24 @@ export function transformWebhookResponse(
     title: raw.roleBrief || "Role not specified",
     sourcingType,
     baselineFit: raw.weighted_baseline_score ?? 0,
-    scenarioRisk: raw.scenario_score ?? 0,
-    aiConfidence: raw.risk_adjusted_final_score != null
+    scenarioRisk: raw.execution_risk_rating ?? raw.scenario_score ?? 0,
+    aiConfidence: raw.ai_confidence_score ?? (raw.risk_adjusted_final_score != null
       ? Math.max(0, Math.min(100, raw.risk_adjusted_final_score * 10))
-      : 0,
-    gains: raw.top_strengths ?? [],
+      : 0),
+    gains: raw.trade_offs?.what_you_gain ?? raw.top_strengths ?? [],
     risks: [
-      ...(raw.critical_gaps ?? []),
+      ...(raw.trade_offs?.what_you_risk ?? raw.critical_gaps ?? []),
       ...(raw.dealbreaker_flags ?? []),
     ],
-    scenarioRiskRating: raw.scenario_score ?? 0,
+    scenarioRiskRating: raw.execution_risk_rating ?? raw.scenario_score ?? 0,
     scenarioStrengths: raw.what_handled_well ?? [],
     blindSpots: raw.where_fell_short ?? [],
-    strategicPlacementAdvice: raw.recommendation_rationale || "No placement advice available.",
-    missingData: raw.risk_indicators ?? [],
-    interviewProbes: raw.suggested_interview_probes ?? [],
+    idealPairing: raw.combination_impact?.ideal_pairing,
+    toxicPairing: raw.combination_impact?.toxic_pairing,
+    auditTrail: raw.audit_trail,
+    strategicPlacementAdvice: raw.strategic_advice || raw.recommendation_rationale || "No placement advice available.",
+    missingData: raw.missing_data_warning ?? raw.risk_indicators ?? [],
+    interviewProbes: raw.board_probes ?? raw.suggested_interview_probes ?? [],
     // New fields
     scenarioTitle: raw.scenario_title,
     scenarioDescription: raw.scenario_description,
@@ -79,7 +82,7 @@ export function transformWebhookResponse(
     riskResilienceScore: raw.risk_resilience_score,
     culturalAlignmentScore: raw.cultural_alignment_score,
     riskAdjustedFinalScore: raw.risk_adjusted_final_score,
-    hasDealbreakers: raw.has_dealbreakers,
+    hasDealbreakers: raw.has_dealbreakers ?? raw.is_high_risk,
     dealbreakerFlags: raw.dealbreaker_flags,
     riskIndicators: raw.risk_indicators,
     finalVerdict: raw.final_verdict,

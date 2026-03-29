@@ -193,9 +193,7 @@ const CandidateDetail = ({ candidate }: CandidateDetailProps) => {
                     <CircleDot className="w-4 h-4 text-primary" />
                     <h4 className="text-xs font-semibold tracking-wider uppercase text-primary">Ideal Pairing</h4>
                   </div>
-                  <p className="text-sm font-medium text-foreground">{c.idealPairing.name}</p>
-                  <p className="text-[11px] text-muted-foreground mb-2">{c.idealPairing.title}</p>
-                  <p className="text-sm text-foreground/70 leading-relaxed">{c.idealPairing.rationale}</p>
+                  <p className="text-sm text-foreground/70 leading-relaxed">{c.idealPairing}</p>
                 </div>
               )}
               {c.toxicPairing && (
@@ -204,9 +202,7 @@ const CandidateDetail = ({ candidate }: CandidateDetailProps) => {
                     <AlertTriangle className="w-4 h-4 text-amber-600" />
                     <h4 className="text-xs font-semibold tracking-wider uppercase text-amber-700">Toxic Pairing</h4>
                   </div>
-                  <p className="text-sm font-medium text-foreground">{c.toxicPairing.name}</p>
-                  <p className="text-[11px] text-muted-foreground mb-2">{c.toxicPairing.title}</p>
-                  <p className="text-sm text-foreground/70 leading-relaxed">{c.toxicPairing.rationale}</p>
+                  <p className="text-sm text-foreground/70 leading-relaxed">{c.toxicPairing}</p>
                 </div>
               )}
             </div>
@@ -238,11 +234,11 @@ const CandidateDetail = ({ candidate }: CandidateDetailProps) => {
                   </div>
                   <div className="p-4 bg-muted/50">
                     <span className="text-[10px] font-semibold tracking-wider uppercase text-muted-foreground block mb-1.5">Evidence from CV</span>
-                    <p className="text-sm text-foreground/75 leading-relaxed">{entry.evidence}</p>
+                    <p className="text-sm text-foreground/75 leading-relaxed">{entry.evidence_from_cv}</p>
                   </div>
                   <div className="p-4 bg-muted/50">
                     <span className="text-[10px] font-semibold tracking-wider uppercase text-muted-foreground block mb-1.5">Scenario Impact</span>
-                    <p className="text-sm text-foreground/75 leading-relaxed">{entry.impact}</p>
+                    <p className="text-sm text-foreground/75 leading-relaxed">{entry.impact_on_scenario}</p>
                   </div>
                 </div>
               ))}
@@ -296,20 +292,24 @@ const CandidateDetail = ({ candidate }: CandidateDetailProps) => {
 
         {/* Section 5: Human Action Required */}
         <section className="space-y-4">
-          {c.missingData.length > 0 && (
+          {c.missingData && (typeof c.missingData === 'string' ? c.missingData.length > 0 : c.missingData.length > 0) && (
             <div className="p-4 rounded-lg border border-amber-200 bg-amber-50/50">
               <div className="flex items-center gap-2 mb-3">
                 <MessageSquareWarning className="w-4 h-4 text-amber-600" />
                 <h4 className="text-xs font-semibold tracking-wider uppercase text-amber-700">Missing Data Warning</h4>
               </div>
-              <ul className="space-y-2">
-                {c.missingData.map((d, i) => (
-                  <li key={i} className="flex items-start gap-2 text-sm text-foreground/70">
-                    <span className="text-amber-500 mt-1">•</span>
-                    <span>{d}</span>
-                  </li>
-                ))}
-              </ul>
+              {typeof c.missingData === 'string' ? (
+                <p className="text-sm text-foreground/70">{c.missingData}</p>
+              ) : (
+                <ul className="space-y-2">
+                  {c.missingData.map((d, i) => (
+                    <li key={i} className="flex items-start gap-2 text-sm text-foreground/70">
+                      <span className="text-amber-500 mt-1">•</span>
+                      <span>{d}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
           )}
 
