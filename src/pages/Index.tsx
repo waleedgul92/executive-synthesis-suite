@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
 import EnvironmentPanel from "@/components/EnvironmentPanel";
 import RosterPanel, { type Candidate } from "@/components/RosterPanel";
