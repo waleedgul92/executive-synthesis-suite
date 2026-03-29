@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
 import EnvironmentPanel from "@/components/EnvironmentPanel";
@@ -16,10 +17,27 @@ const Index = () => {
 
   const handleRunSynthesis = async () => {
     setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
+    try {
+      const payload = {
+        mandate,
+        candidates: candidates.map(({ id, ...rest }) => rest),
+      };
+      const response = await fetch(
+        "https://nell-groved-alla.ngrok-free.dev/webhook-test/hiring-pipeline",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        }
+      );
+      if (!response.ok) throw new Error(`Webhook returned ${response.status}`);
       navigate("/report");
-    }, 2000);
+    } catch (err: any) {
+      console.error("Synthesis webhook error:", err);
+      toast.error("Synthesis failed — please try again.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
