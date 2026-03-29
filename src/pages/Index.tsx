@@ -19,16 +19,20 @@ const Index = () => {
   const handleRunSynthesis = async () => {
     setIsLoading(true);
     try {
+      const scenarioText = "";
       const formData = new FormData();
-      formData.append('mandate', mandate);
-      
-      candidates.forEach((candidate, index) => {
-        formData.append(`candidates[${index}][name]`, candidate.name);
-        formData.append(`candidates[${index}][sourcingType]`, candidate.sourcingType);
-        if (candidate.file) {
-          formData.append(`candidates[${index}][file]`, candidate.file);
+      formData.append("roleBrief", mandate);
+      formData.append("dynamic_scenario", scenarioText);
+
+      candidates.forEach((candidate) => {
+        if (candidate.fileObject) {
+          formData.append("file", candidate.fileObject);
         }
       });
+
+      for (let pair of formData.entries()) {
+        console.log(pair[0], pair[1]);
+      }
 
       const response = await fetch(
         "https://nell-groved-alla.ngrok-free.dev/webhook-test/hiring-pipeline",
