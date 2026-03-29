@@ -46,17 +46,17 @@ const CandidateSidebar = ({ candidates, selectedId, onSelect, onAddCandidate }: 
                 </div>
                 <div className="min-w-0 flex-1">
                   <p className={cn("text-sm font-medium truncate", active ? "text-foreground" : "text-foreground/80")}>
-                    {c.name}
+                    {c.name || "Unnamed Executive"}
                   </p>
                   <p className="text-[11px] text-muted-foreground truncate mt-0.5">
-                    {c.sourcingType}
+                    {c.sourcingType || "Unknown"}
                   </p>
                   <div className="flex items-center gap-2 mt-2">
                     <Badge variant="success" className="text-[10px] px-2 py-0">
-                      Fit: {c.baselineFit}/100
+                      Fit: {c.baselineFit ?? 0}/100
                     </Badge>
-                    <Badge variant={c.scenarioRisk > 50 ? "danger" : "warning"} className="text-[10px] px-2 py-0">
-                      Risk: {c.scenarioRisk}/100
+                    <Badge variant={(c.scenarioRisk ?? 0) > 50 ? "danger" : "warning"} className="text-[10px] px-2 py-0">
+                      Risk: {c.scenarioRisk ?? 0}/100
                     </Badge>
                   </div>
                 </div>
