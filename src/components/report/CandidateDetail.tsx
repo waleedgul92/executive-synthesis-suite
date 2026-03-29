@@ -136,6 +136,18 @@ const CandidateDetail = ({ candidate }: CandidateDetailProps) => {
           </div>
         </section>
 
+        {/* Section: Strategic Placement Advice */}
+        <section>
+          <SectionHeader icon={Lightbulb} label="Strategic Placement Advice" />
+          <Alert className="mt-3 border-primary/20 bg-primary/5">
+            <Lightbulb className="h-4 w-4 text-primary" />
+            <AlertTitle className="text-sm font-semibold text-foreground">Placement Recommendation</AlertTitle>
+            <AlertDescription className="text-sm text-foreground/75 leading-relaxed mt-1">
+              {c.strategicPlacementAdvice}
+            </AlertDescription>
+          </Alert>
+        </section>
+
         {/* Section 4: Explainability Audit Trail */}
         <section>
           <SectionHeader icon={FileSearch} label="Explainability Audit Trail" />

@@ -200,6 +200,7 @@ export const mockCandidates: SynthesisCandidate[] = [
         impact: "Continuity advantage — minimal onboarding time. Risk: may perpetuate existing strategic blind spots.",
       },
     ],
+    strategicPlacementAdvice: "Dr. Mayer represents the lowest-risk, highest-continuity option. He is ideally suited if the Board values institutional stability and stakeholder confidence over transformational disruption. His appointment would signal strategic continuity to investors and IG Metall alike. However, the Board should commission an independent external leadership assessment to validate his operational readiness — his strategy-only career track is the single largest uncertainty in his profile.",
     missingData: [
       "No external leadership assessment — all evaluations are internal BMW HR reviews",
       "No data on candidate's willingness to relocate if role requires presence in new plant locations",
