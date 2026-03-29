@@ -16,7 +16,7 @@ export interface Candidate {
   name: string;
   sourcingType: string;
   fileName: string;
-  file?: File;
+  fileObject?: File;
 }
 
 interface RosterPanelProps {
@@ -28,7 +28,7 @@ const RosterPanel = ({ candidates, onCandidatesChange }: RosterPanelProps) => {
   const addCandidate = () => {
     onCandidatesChange([
       ...candidates,
-      { id: crypto.randomUUID(), name: "", sourcingType: "", fileName: "" },
+      { id: crypto.randomUUID(), name: "", sourcingType: "", fileName: "", fileObject: undefined },
     ]);
   };
 
@@ -37,7 +37,7 @@ const RosterPanel = ({ candidates, onCandidatesChange }: RosterPanelProps) => {
     onCandidatesChange(candidates.filter((c) => c.id !== id));
   };
 
-  const updateCandidate = (id: string, field: keyof Candidate, value: string | File) => {
+  const updateCandidate = (id: string, field: keyof Candidate, value: string | File | undefined) => {
     onCandidatesChange(
       candidates.map((c) => (c.id === id ? { ...c, [field]: value } : c))
     );
@@ -49,7 +49,7 @@ const RosterPanel = ({ candidates, onCandidatesChange }: RosterPanelProps) => {
       const file = e.dataTransfer.files[0];
       if (file?.type === "application/pdf") {
         onCandidatesChange(
-          candidates.map((c) => (c.id === id ? { ...c, fileName: file.name, file } : c))
+          candidates.map((c) => (c.id === id ? { ...c, fileName: file.name, fileObject: file } : c))
         );
       }
     },
@@ -60,7 +60,7 @@ const RosterPanel = ({ candidates, onCandidatesChange }: RosterPanelProps) => {
     const file = e.target.files?.[0];
     if (file) {
       onCandidatesChange(
-        candidates.map((c) => (c.id === id ? { ...c, fileName: file.name, file } : c))
+        candidates.map((c) => (c.id === id ? { ...c, fileName: file.name, fileObject: file } : c))
       );
     }
   };
