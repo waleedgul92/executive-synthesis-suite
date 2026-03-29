@@ -14,6 +14,7 @@ export interface SynthesisCandidate {
   idealPairing: { name: string; title: string; rationale: string };
   toxicPairing: { name: string; title: string; rationale: string };
   auditTrail: { claim: string; evidence: string; impact: string }[];
+  strategicPlacementAdvice: string;
   missingData: string[];
   interviewProbes: string[];
 }
