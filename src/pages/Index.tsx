@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Loader2, Zap } from "lucide-react";
 
 const Index = () => {
+  const navigate = useNavigate();
   const [mandate, setMandate] = useState("");
   const [candidates, setCandidates] = useState<Candidate[]>([
     { id: crypto.randomUUID(), name: "", sourcingType: "", fileName: "" },
