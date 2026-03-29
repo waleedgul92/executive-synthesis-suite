@@ -25,7 +25,7 @@ const Index = () => {
       };
 
       const response = await fetch(
-        "https://nell-groved-alla.ngrok-free.dev/webhook-test/hiring-pipeline",
+        "https://nell-groved-alla.ngrok-free.dev/webhook/hiring-pipeline",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
