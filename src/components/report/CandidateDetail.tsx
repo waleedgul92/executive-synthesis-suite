@@ -26,13 +26,9 @@ interface CandidateDetailProps {
 const CandidateDetail = ({ candidate }: CandidateDetailProps) => {
   const c = candidate;
 
-  const verdictColor = c.hireRecommendation === "HIRE"
-    ? "success"
-    : c.hireRecommendation === "DO_NOT_HIRE"
-      ? "danger"
-      : "warning";
-
-  const verdictLabel = c.hireRecommendation?.replace(/_/g, " ") || "PENDING";
+  const isHighRisk = c.hasDealbreakers === true;
+  const verdictColor = isHighRisk ? "danger" : "success";
+  const verdictLabel = isHighRisk ? "HIGH RISK" : (c.hireRecommendation?.replace(/_/g, " ") || "REVIEW NEEDED");
 
   const gains = c.gains ?? [];
   const risks = c.risks ?? [];
