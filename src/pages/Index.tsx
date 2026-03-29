@@ -19,16 +19,22 @@ const Index = () => {
   const handleRunSynthesis = async () => {
     setIsLoading(true);
     try {
-      const payload = {
-        mandate,
-        candidates: candidates.map(({ id, ...rest }) => rest),
-      };
+      const formData = new FormData();
+      formData.append('mandate', mandate);
+      
+      candidates.forEach((candidate, index) => {
+        formData.append(`candidates[${index}][name]`, candidate.name);
+        formData.append(`candidates[${index}][sourcingType]`, candidate.sourcingType);
+        if (candidate.file) {
+          formData.append(`candidates[${index}][file]`, candidate.file);
+        }
+      });
+
       const response = await fetch(
         "https://nell-groved-alla.ngrok-free.dev/webhook-test/hiring-pipeline",
         {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload),
+          body: formData,
         }
       );
       if (!response.ok) throw new Error(`Webhook returned ${response.status}`);
