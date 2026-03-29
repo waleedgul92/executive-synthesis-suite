@@ -12,33 +12,24 @@ const Index = () => {
   const navigate = useNavigate();
   const [mandate, setMandate] = useState("");
   const [candidates, setCandidates] = useState<Candidate[]>([
-    { id: crypto.randomUUID(), name: "", sourcingType: "", fileName: "" },
+    { id: crypto.randomUUID(), name: "", sourcingType: "", cvText: "" },
   ]);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleRunSynthesis = async () => {
     setIsLoading(true);
     try {
-      const scenarioText = "";
-      const formData = new FormData();
-      formData.append("roleBrief", mandate);
-      formData.append("dynamic_scenario", scenarioText);
-
-      candidates.forEach((candidate) => {
-        if (candidate.fileObject) {
-          formData.append("file", candidate.fileObject);
-        }
-      });
-
-      for (let pair of formData.entries()) {
-        console.log(pair[0], pair[1]);
-      }
+      const payload = {
+        mandate,
+        candidates: candidates.map(({ id, ...rest }) => rest),
+      };
 
       const response = await fetch(
         "https://nell-groved-alla.ngrok-free.dev/webhook-test/hiring-pipeline",
         {
           method: "POST",
-          body: formData,
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
         }
       );
       if (!response.ok) throw new Error(`Webhook returned ${response.status}`);
