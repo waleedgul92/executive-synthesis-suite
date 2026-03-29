@@ -16,8 +16,10 @@ const Index = () => {
 
   const handleRunSynthesis = async () => {
     setIsLoading(true);
-    // Simulate loading — replace with actual n8n webhook call
-    setTimeout(() => setIsLoading(false), 3000);
+    setTimeout(() => {
+      setIsLoading(false);
+      navigate("/report");
+    }, 2000);
   };
 
   return (
