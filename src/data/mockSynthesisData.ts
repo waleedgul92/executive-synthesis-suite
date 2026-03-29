@@ -75,6 +75,7 @@ export const mockCandidates: SynthesisCandidate[] = [
         impact: "Essential capability for managing the projected workforce transition in the EV pivot.",
       },
     ],
+    strategicPlacementAdvice: "Dr. Voss is best positioned as a transformation-stage leader. Her optimal deployment window is during the first 18 months of the NEUE KLASSE operational rollout, where her cross-industry scaling expertise will have maximum impact. Consider pairing her appointment with a structured 90-day immersion in BMW's regulatory and union landscape to mitigate her primary blind spots. If the Board's priority shifts to steady-state optimization rather than transformation, her profile becomes significantly less advantageous.",
     missingData: [
       "No 360-degree leadership assessment on file — psychometric profile unavailable",
       "Compensation expectations and non-compete clause status from Siemens not disclosed",
