@@ -12,8 +12,12 @@ const SynthesisReport = () => {
 
   const candidates: SynthesisCandidate[] = location.state?.candidates ?? [];
 
+  console.log("SynthesisReport candidates:", candidates.length, candidates.map(c => ({ id: c.id, name: c.name })));
+
   const [selectedId, setSelectedId] = useState(candidates[0]?.id ?? "");
   const selected = candidates.find((c) => c.id === selectedId) ?? candidates[0];
+
+  console.log("Selected candidate:", selectedId, selected?.name);
 
   const handleEditSetup = () => navigate("/");
   const handleAddCandidate = () => navigate("/");
