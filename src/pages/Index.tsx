@@ -34,7 +34,21 @@ const Index = () => {
       );
       if (!response.ok) throw new Error(`Webhook returned ${response.status}`);
 
-      const data = await response.json();
+      const text = await response.text();
+      console.log("Raw webhook response:", text);
+
+      let data: any;
+      try {
+        data = JSON.parse(text);
+      } catch {
+        // Try to extract JSON from mixed response
+        const jsonMatch = text.match(/\[[\s\S]*\]/) || text.match(/\{[\s\S]*\}/);
+        if (jsonMatch) {
+          data = JSON.parse(jsonMatch[0]);
+        } else {
+          throw new Error("Could not parse webhook response as JSON");
+        }
+      }
 
       // Handle both single object and array responses
       const rawResults = Array.isArray(data) ? data : [data];

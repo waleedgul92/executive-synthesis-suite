@@ -1,23 +1,22 @@
 export interface SynthesisCandidate {
   id: string;
-  name: string;
-  title: string;
-  sourcingType: string;
-  baselineFit: number;
-  scenarioRisk: number;
-  aiConfidence: number;
-  gains: string[];
-  risks: string[];
-  scenarioRiskRating: number;
-  scenarioStrengths: string[];
-  blindSpots: string[];
+  name?: string;
+  title?: string;
+  sourcingType?: string;
+  baselineFit?: number;
+  scenarioRisk?: number;
+  aiConfidence?: number;
+  gains?: string[];
+  risks?: string[];
+  scenarioRiskRating?: number;
+  scenarioStrengths?: string[];
+  blindSpots?: string[];
   idealPairing?: string;
   toxicPairing?: string;
-  auditTrail?: { claim: string; evidence_from_cv: string; impact_on_scenario: string }[];
-  strategicPlacementAdvice: string;
-  missingData: string | string[];
-  interviewProbes: string[];
-  // New fields from n8n webhook
+  auditTrail?: { claim?: string; evidence_from_cv?: string; impact_on_scenario?: string }[];
+  strategicPlacementAdvice?: string;
+  missingData?: string | string[];
+  interviewProbes?: string[];
   scenarioTitle?: string;
   scenarioDescription?: string;
   simulatedResponse?: string;
@@ -32,12 +31,12 @@ export interface SynthesisCandidate {
   dealbreakerFlags?: string[];
   riskIndicators?: string[];
   finalVerdict?: {
-    overall_recommendation: string;
-    risk_adjusted_score: number;
-    baseline_score: number;
-    score_delta: number;
-    is_hireable: boolean;
-    has_critical_risks: boolean;
+    overall_recommendation?: string;
+    risk_adjusted_score?: number;
+    baseline_score?: number;
+    score_delta?: number;
+    is_hireable?: boolean;
+    has_critical_risks?: boolean;
   };
 }
 
