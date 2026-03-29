@@ -47,30 +47,27 @@ export function transformWebhookResponse(
   sourcingType: string
 ): SynthesisCandidate {
   return {
-    id: String(index + 1),
-    name: raw.candidateName || "Unknown Candidate",
-    title: raw.roleBrief || "Role not specified",
-    sourcingType,
-    baselineFit: raw.weighted_baseline_score ?? 0,
-    scenarioRisk: raw.execution_risk_rating ?? raw.scenario_score ?? 0,
-    aiConfidence: raw.ai_confidence_score ?? (raw.risk_adjusted_final_score != null
-      ? Math.max(0, Math.min(100, raw.risk_adjusted_final_score * 10))
-      : 0),
-    gains: raw.trade_offs?.what_you_gain ?? raw.top_strengths ?? [],
+    id: raw.candidateId || String(index + 1),
+    name: raw.candidateName,
+    title: raw.roleBrief,
+    sourcingType: sourcingType !== "Unknown" ? sourcingType : (raw.candidateType || "Unknown"),
+    baselineFit: raw.weighted_baseline_score,
+    scenarioRisk: raw.execution_risk_rating ?? raw.scenario_score,
+    aiConfidence: raw.ai_confidence_score,
+    gains: raw.trade_offs?.what_you_gain ?? [],
     risks: [
-      ...(raw.trade_offs?.what_you_risk ?? raw.critical_gaps ?? []),
+      ...(raw.trade_offs?.what_you_risk ?? []),
       ...(raw.dealbreaker_flags ?? []),
     ],
-    scenarioRiskRating: raw.execution_risk_rating ?? raw.scenario_score ?? 0,
+    scenarioRiskRating: raw.execution_risk_rating ?? raw.scenario_score,
     scenarioStrengths: raw.what_handled_well ?? [],
     blindSpots: raw.where_fell_short ?? [],
     idealPairing: raw.combination_impact?.ideal_pairing,
     toxicPairing: raw.combination_impact?.toxic_pairing,
     auditTrail: raw.audit_trail,
-    strategicPlacementAdvice: raw.strategic_advice || raw.recommendation_rationale || "No placement advice available.",
-    missingData: raw.missing_data_warning ?? raw.risk_indicators ?? [],
-    interviewProbes: raw.board_probes ?? raw.suggested_interview_probes ?? [],
-    // New fields
+    strategicPlacementAdvice: raw.strategic_advice,
+    missingData: raw.missing_data_warning,
+    interviewProbes: raw.board_probes ?? [],
     scenarioTitle: raw.scenario_title,
     scenarioDescription: raw.scenario_description,
     simulatedResponse: raw.simulated_candidate_response,
