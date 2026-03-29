@@ -1,5 +1,6 @@
-import { User } from "lucide-react";
+import { User, Plus } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import type { SynthesisCandidate } from "@/data/mockSynthesisData";
 import { cn } from "@/lib/utils";
 
@@ -7,9 +8,10 @@ interface CandidateSidebarProps {
   candidates: SynthesisCandidate[];
   selectedId: string;
   onSelect: (id: string) => void;
+  onAddCandidate?: () => void;
 }
 
-const CandidateSidebar = ({ candidates, selectedId, onSelect }: CandidateSidebarProps) => {
+const CandidateSidebar = ({ candidates, selectedId, onSelect, onAddCandidate }: CandidateSidebarProps) => {
   return (
     <aside className="w-full lg:w-80 shrink-0 border-r border-border bg-sidebar flex flex-col">
       <div className="px-5 py-4 border-b border-border">
@@ -63,6 +65,19 @@ const CandidateSidebar = ({ candidates, selectedId, onSelect }: CandidateSidebar
           );
         })}
       </div>
+
+      {onAddCandidate && (
+        <div className="p-3 border-t border-border">
+          <Button
+            variant="ghost"
+            onClick={onAddCandidate}
+            className="w-full border-2 border-dashed border-border bg-muted/30 text-muted-foreground hover:text-primary hover:border-primary/30 hover:bg-primary/5 text-xs h-10"
+          >
+            <Plus className="w-3.5 h-3.5 mr-1.5" />
+            Upload Additional Executive
+          </Button>
+        </div>
+      )}
     </aside>
   );
 };
