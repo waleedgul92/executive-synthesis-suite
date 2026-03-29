@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
-import { FileText } from "lucide-react";
+import { FileText, ShieldAlert } from "lucide-react";
 
 interface EnvironmentPanelProps {
   mandate: string;
@@ -27,6 +27,27 @@ const EnvironmentPanel = ({ mandate, onMandateChange }: EnvironmentPanelProps) =
             onChange={(e) => onMandateChange(e.target.value)}
             placeholder="Paste the executive mandate or strategic objectives here..."
             className="min-h-[160px] bg-input/50 border-border text-sm placeholder:text-muted-foreground resize-none focus:border-primary/40"
+          />
+        </CardContent>
+      </Card>
+
+      <Card className="shadow-sm border-dashed border-muted-foreground/30">
+        <CardHeader className="pb-3">
+          <div className="flex items-center gap-2">
+            <div className="flex items-center justify-center w-6 h-6 rounded bg-destructive/10 border border-destructive/20">
+              <ShieldAlert className="w-3.5 h-3.5 text-destructive" />
+            </div>
+            <CardTitle className="text-sm font-semibold tracking-wide">
+              Step 2: Inject Dynamic Scenario (Stress Test)
+            </CardTitle>
+            <span className="ml-auto text-[10px] uppercase tracking-widest text-muted-foreground font-medium">Coming Soon</span>
+          </div>
+        </CardHeader>
+        <CardContent>
+          <Textarea
+            disabled
+            placeholder="Define a crisis scenario to stress-test candidates (e.g., 'A sudden 30% tariff on EV components forces an immediate supply chain pivot within 30 days…')"
+            className="min-h-[120px] bg-muted/30 border-border text-sm placeholder:text-muted-foreground/50 resize-none cursor-not-allowed opacity-60"
           />
         </CardContent>
       </Card>
