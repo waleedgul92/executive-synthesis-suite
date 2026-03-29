@@ -85,3 +85,70 @@ This allows a Board of Directors to make a choice based on their specific **risk
 3. Paste CV text for candidates.
 4. Click **Assess Candidates**.
 5. Watch the AI flag high-risk profiles due to the specific strike scenario while promoting the top strategic choice.
+
+
+## Example Demo Data
+### Example Mandate
+ 
+> **Lead the 2030 manufacturing pivot** by integrating software-defined quality controls into legacy assembly lines without losing production velocity.
+ 
+---
+ 
+### Example Candidates
+ 
+#### Candidate 1 — Elena Rostova
+
+
+ Chief EV Supply Chain & Scaling Officer, VoltDynamics
+Executive Summary
+A hyper-growth scaling executive bringing Silicon Valley speed to legacy hardware problems. I specialize
+in rapid EV transitions, software-defined manufacturing, and bypassing bureaucratic bottlenecks to get
+products to market. I build agile, autonomous teams that move fast and break legacy constraints.
+Professional Experience
+VoltDynamics 2020 – Present
+Chief EV Supply Chain & Scaling Officer
+• Scaled EV production from 5,000 to 120,000 units annually in 3 years.
+• Vertically integrated battery packaging and software-hardware integration, bypassing traditional
+Tier-1 suppliers.
+• Bypassed Board risk parameters to greenlight unproven, high-yield manufacturing tech, resulting
+in 30% faster time-to-market.
+TechDrive Mobility 2014 – 2020
+VP of Advanced Prototyping
+• Led the transition from ICE (Internal Combustion) to battery-electric architecture.
+• Prioritized rapid iteration and software patches over traditional 6-year development cycles.
+Education
+MS in Mechanical Engineering, MIT
+
+
+---
+ 
+#### Candidate 2 — Marcus Vanc
+
+
+Manufacturing Restructuring, AutoTech Heavy Industrie
+
+Executive Summary
+A ruthless optimizer and turnaround specialist with 15+ years of experience salvaging distressed manufacturing assets. Known for executing aggressive cost-reduction mandates, restructuring bloated middle management, and driving immediate bottom-line impact.
+Professional Experience
+AutoTech Heavy Industries — 2019–Present
+SVP Global Manufacturing Restructuring
+
+Mandated by the Board to stop bleeding capital across 4 European plants.
+Executed a $400M cost-out program within 18 months via 22% reduction in force and aggressive supplier renegotiation.
+Increased output efficiency by 18% by dismantling union-friendly schedules and enforcing rigid, data-driven KPIs.
+
+Stahl & Söhne Industrials — 2012–2019
+VP of Operations
+
+Consolidated 3 regional facilities into 1 mega-plant; maintained operations through two major union strikes.
+Replaced the entire legacy leadership team within 6 months to enforce a culture of "metrics over feelings."
+
+Education
+MBA, London Business School
+BS in Industrial Engineering
+---
+ 
+#### Candidate 3 — Julian Thorne
+ 
+Executive SummaryA seasoned, stabilizing leader with 25 years of experience in European automotive manufacturing. Specialist in high-quality steady-state operations and complex stakeholder alignment. Philosophy: sustainable growth requires total consensus between board, workers’ council, and local governments.Professional ExperienceLegacyMotors GmbH 2015 – PresentHead of European Production Operations• Manage a stable, highly tenured workforce of 12,000 across Germany and France.• Negotiated three major union contracts without strikes, prioritizing job security in exchange for
+phased automation.• Led 5-year hybrid-vehicle integration roadmap; consistently hit all quality and safety targets.LegacyMotors GmbH 2005 – 2015Plant Director, Munich Facility• Maintained highest quality-control rating in the global network for 7 consecutive years.• Fostered a loyal management team with a 2% turnover rate.EducationDiplom-Ingenieur (Mechanical Engineering), Technical University of Munich
