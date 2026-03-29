@@ -46,7 +46,7 @@ const EnvironmentPanel = ({ mandate, onMandateChange }: EnvironmentPanelProps) =
         <CardContent>
           <Textarea
             disabled
-            placeholder="Define a crisis scenario to stress-test candidates (e.g., 'A sudden 30% tariff on EV components forces an immediate supply chain pivot within 30 days…')"
+            placeholder="Sudden Scenario Shift: A new, aggressive geopolitical tariff has just increased the cost of imported Asian battery cells by 40%, instantly destroying the EV margin forecast for the next 18 months. Simultaneously, leaked internal documents regarding the new highly automated production line have triggered an unsanctioned 'wildcat' strike. The Board demands a revised supply chain strategy within 30 days and an immediate resolution to the strike without conceding to the union's demands to halt the automation rollout."
             className="min-h-[120px] bg-muted/30 border-border text-sm placeholder:text-muted-foreground/50 resize-none cursor-not-allowed opacity-60"
           />
         </CardContent>
