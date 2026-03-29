@@ -27,9 +27,7 @@ const Index = () => {
           {/* Left Column */}
           <EnvironmentPanel
             mandate={mandate}
-            scenario={scenario}
             onMandateChange={setMandate}
-            onScenarioChange={setScenario}
           />
 
           {/* Right Column */}
