@@ -144,25 +144,24 @@ const CandidateDetail = ({ candidate }: CandidateDetailProps) => {
         {/* Section 4: Explainability Audit Trail */}
         <section>
           <SectionHeader icon={FileSearch} label="Explainability Audit Trail" />
-          <Accordion type="single" collapsible className="mt-3 space-y-2">
+          <div className="mt-3 space-y-3">
             {c.auditTrail.map((entry, i) => (
-              <AccordionItem key={i} value={`audit-${i}`} className="border border-border/40 rounded-lg px-4 bg-background/40">
-                <AccordionTrigger className="text-sm text-foreground/90 hover:no-underline py-3">
-                  <span className="text-left pr-4">{entry.claim}</span>
-                </AccordionTrigger>
-                <AccordionContent className="pb-4 space-y-3">
-                  <div>
-                    <span className="text-[10px] font-semibold tracking-wider uppercase text-muted-foreground/60">Evidence from CV</span>
-                    <p className="text-sm text-foreground/75 mt-1">{entry.evidence}</p>
-                  </div>
-                  <div>
-                    <span className="text-[10px] font-semibold tracking-wider uppercase text-muted-foreground/60">Impact on Scenario</span>
-                    <p className="text-sm text-foreground/75 mt-1">{entry.impact}</p>
-                  </div>
-                </AccordionContent>
-              </AccordionItem>
+              <div key={i} className="grid grid-cols-1 md:grid-cols-3 gap-px rounded-lg overflow-hidden border border-border/40">
+                <div className="p-4 bg-card/60">
+                  <span className="text-[10px] font-semibold tracking-wider uppercase text-electric/70 block mb-1.5">AI Claim</span>
+                  <p className="text-sm text-foreground/90 leading-relaxed">{entry.claim}</p>
+                </div>
+                <div className="p-4 bg-card/40">
+                  <span className="text-[10px] font-semibold tracking-wider uppercase text-muted-foreground/60 block mb-1.5">Evidence from CV</span>
+                  <p className="text-sm text-foreground/75 leading-relaxed">{entry.evidence}</p>
+                </div>
+                <div className="p-4 bg-card/40">
+                  <span className="text-[10px] font-semibold tracking-wider uppercase text-muted-foreground/60 block mb-1.5">Scenario Impact</span>
+                  <p className="text-sm text-foreground/75 leading-relaxed">{entry.impact}</p>
+                </div>
+              </div>
             ))}
-          </Accordion>
+          </div>
         </section>
 
         {/* Section 5: Human Action Required */}
