@@ -15,7 +15,7 @@ export interface SynthesisCandidate {
   toxicPairing?: string;
   auditTrail?: { claim: string; evidence_from_cv: string; impact_on_scenario: string }[];
   strategicPlacementAdvice: string;
-  missingData: string[];
+  missingData: string | string[];
   interviewProbes: string[];
   // New fields from n8n webhook
   scenarioTitle?: string;
