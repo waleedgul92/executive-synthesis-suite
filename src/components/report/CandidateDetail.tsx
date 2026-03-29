@@ -234,11 +234,11 @@ const CandidateDetail = ({ candidate }: CandidateDetailProps) => {
                   </div>
                   <div className="p-4 bg-muted/50">
                     <span className="text-[10px] font-semibold tracking-wider uppercase text-muted-foreground block mb-1.5">Evidence from CV</span>
-                    <p className="text-sm text-foreground/75 leading-relaxed">{entry.evidence}</p>
+                    <p className="text-sm text-foreground/75 leading-relaxed">{entry.evidence_from_cv}</p>
                   </div>
                   <div className="p-4 bg-muted/50">
                     <span className="text-[10px] font-semibold tracking-wider uppercase text-muted-foreground block mb-1.5">Scenario Impact</span>
-                    <p className="text-sm text-foreground/75 leading-relaxed">{entry.impact}</p>
+                    <p className="text-sm text-foreground/75 leading-relaxed">{entry.impact_on_scenario}</p>
                   </div>
                 </div>
               ))}
