@@ -35,23 +35,40 @@ const Index = () => {
       if (!response.ok) throw new Error(`Webhook returned ${response.status}`);
 
       const text = await response.text();
+      console.log("Raw webhook response length:", text.length);
       console.log("Raw webhook response:", text);
 
       let data: any;
       try {
         data = JSON.parse(text);
       } catch {
-        // Try to extract JSON from mixed response
-        const jsonMatch = text.match(/\[[\s\S]*\]/) || text.match(/\{[\s\S]*\}/);
-        if (jsonMatch) {
-          data = JSON.parse(jsonMatch[0]);
+        // Try to extract a JSON array first
+        const arrayMatch = text.match(/\[[\s\S]*\]/);
+        if (arrayMatch) {
+          data = JSON.parse(arrayMatch[0]);
         } else {
-          throw new Error("Could not parse webhook response as JSON");
+          // Try to find multiple JSON objects concatenated together
+          const objects: any[] = [];
+          const objectRegex = /\{(?:[^{}]|\{(?:[^{}]|\{[^{}]*\})*\})*\}/g;
+          let match;
+          while ((match = objectRegex.exec(text)) !== null) {
+            try {
+              objects.push(JSON.parse(match[0]));
+            } catch {
+              // skip malformed objects
+            }
+          }
+          if (objects.length > 0) {
+            data = objects;
+          } else {
+            throw new Error("Could not parse webhook response as JSON");
+          }
         }
       }
 
       // Handle both single object and array responses
       const rawResults = Array.isArray(data) ? data : [data];
+      console.log("Parsed candidates count:", rawResults.length, rawResults.map((r: any) => r.candidateName));
 
       const synthesisResults = rawResults.map((raw, i) => {
         // Try to match sourcing type from original candidate list
