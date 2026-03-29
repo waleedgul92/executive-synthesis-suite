@@ -11,9 +11,9 @@ export interface SynthesisCandidate {
   scenarioRiskRating: number;
   scenarioStrengths: string[];
   blindSpots: string[];
-  idealPairing?: { name: string; title: string; rationale: string };
-  toxicPairing?: { name: string; title: string; rationale: string };
-  auditTrail?: { claim: string; evidence: string; impact: string }[];
+  idealPairing?: string;
+  toxicPairing?: string;
+  auditTrail?: { claim: string; evidence_from_cv: string; impact_on_scenario: string }[];
   strategicPlacementAdvice: string;
   missingData: string[];
   interviewProbes: string[];
