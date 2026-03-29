@@ -61,11 +61,11 @@ const RosterPanel = ({ candidates, onCandidatesChange }: RosterPanelProps) => {
   };
 
   return (
-    <Card className="card-shine border-border/60 h-full">
+    <Card className="shadow-sm h-full">
       <CardHeader className="pb-3">
         <div className="flex items-center gap-2">
-          <div className="flex items-center justify-center w-6 h-6 rounded bg-electric/15 border border-electric/20">
-            <Users className="w-3.5 h-3.5 text-electric" />
+          <div className="flex items-center justify-center w-6 h-6 rounded bg-primary/10 border border-primary/20">
+            <Users className="w-3.5 h-3.5 text-primary" />
           </div>
           <CardTitle className="text-sm font-semibold tracking-wide">
             Step 3: Executive Roster
@@ -76,18 +76,18 @@ const RosterPanel = ({ candidates, onCandidatesChange }: RosterPanelProps) => {
         {candidates.map((candidate, index) => (
           <div
             key={candidate.id}
-            className="relative p-4 rounded-lg border border-border/50 bg-background/40 space-y-3"
+            className="relative p-4 rounded-lg border border-border bg-muted/30 space-y-3"
           >
             {candidates.length > 1 && (
               <button
                 onClick={() => removeCandidate(candidate.id)}
-                className="absolute top-3 right-3 text-muted-foreground/40 hover:text-destructive transition-colors"
+                className="absolute top-3 right-3 text-muted-foreground hover:text-destructive transition-colors"
               >
                 <X className="w-3.5 h-3.5" />
               </button>
             )}
 
-            <div className="text-[10px] font-mono text-muted-foreground/50 tracking-wider uppercase">
+            <div className="text-[10px] font-mono text-muted-foreground tracking-wider uppercase">
               Candidate {index + 1}
             </div>
 
@@ -95,14 +95,14 @@ const RosterPanel = ({ candidates, onCandidatesChange }: RosterPanelProps) => {
               placeholder="Executive Name"
               value={candidate.name}
               onChange={(e) => updateCandidate(candidate.id, "name", e.target.value)}
-              className="bg-input/50 border-border/60 text-sm focus:border-electric/40"
+              className="bg-background border-border text-sm focus:border-primary/40"
             />
 
             <Select
               value={candidate.sourcingType}
               onValueChange={(v) => updateCandidate(candidate.id, "sourcingType", v)}
             >
-              <SelectTrigger className="bg-input/50 border-border/60 text-sm focus:border-electric/40">
+              <SelectTrigger className="bg-background border-border text-sm focus:border-primary/40">
                 <SelectValue placeholder="Sourcing Type" />
               </SelectTrigger>
               <SelectContent>
@@ -112,17 +112,16 @@ const RosterPanel = ({ candidates, onCandidatesChange }: RosterPanelProps) => {
               </SelectContent>
             </Select>
 
-            {/* File drop zone */}
             <div
               onDragOver={(e) => e.preventDefault()}
               onDrop={(e) => handleFileDrop(candidate.id, e)}
-              className="relative flex flex-col items-center justify-center gap-2 py-5 rounded-lg border-2 border-dashed border-border/40 bg-input/20 hover:border-electric/30 hover:bg-input/30 transition-colors cursor-pointer"
+              className="relative flex flex-col items-center justify-center gap-2 py-5 rounded-lg border-2 border-dashed border-border bg-muted/20 hover:border-primary/30 hover:bg-muted/40 transition-colors cursor-pointer"
               onClick={() =>
                 document.getElementById(`file-${candidate.id}`)?.click()
               }
             >
-              <Upload className="w-4 h-4 text-muted-foreground/50" />
-              <span className="text-xs text-muted-foreground/50">
+              <Upload className="w-4 h-4 text-muted-foreground" />
+              <span className="text-xs text-muted-foreground">
                 {candidate.fileName || "Upload Executive Dossier / CV (PDF)"}
               </span>
               <input
@@ -139,7 +138,7 @@ const RosterPanel = ({ candidates, onCandidatesChange }: RosterPanelProps) => {
         <Button
           variant="ghost"
           onClick={addCandidate}
-          className="w-full border border-dashed border-border/40 text-muted-foreground/60 hover:text-electric hover:border-electric/30 text-xs"
+          className="w-full border border-dashed border-border text-muted-foreground hover:text-primary hover:border-primary/30 text-xs"
         >
           <Plus className="w-3.5 h-3.5 mr-1.5" />
           Add Another Executive
