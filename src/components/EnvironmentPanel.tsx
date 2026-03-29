@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
-import { FileText } from "lucide-react";
+import { FileText, ShieldAlert } from "lucide-react";
 
 interface EnvironmentPanelProps {
   mandate: string;
