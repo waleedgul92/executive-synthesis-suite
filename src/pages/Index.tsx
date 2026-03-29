@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 import Header from "@/components/Header";
 import EnvironmentPanel from "@/components/EnvironmentPanel";
 import RosterPanel, { type Candidate } from "@/components/RosterPanel";
 import { Button } from "@/components/ui/button";
 import { Loader2, Zap } from "lucide-react";
+import { transformWebhookResponse } from "@/data/mockSynthesisData";
 
 const Index = () => {
   const navigate = useNavigate();
@@ -31,7 +32,22 @@ const Index = () => {
         }
       );
       if (!response.ok) throw new Error(`Webhook returned ${response.status}`);
-      navigate("/report");
+
+      const data = await response.json();
+
+      // Handle both single object and array responses
+      const rawResults = Array.isArray(data) ? data : [data];
+
+      const synthesisResults = rawResults.map((raw, i) => {
+        // Try to match sourcing type from original candidate list
+        const matchedCandidate = candidates.find(
+          (c) => c.name.toLowerCase().trim() === (raw.candidateName || "").toLowerCase().trim()
+        );
+        const sourcingType = matchedCandidate?.sourcingType || "Unknown";
+        return transformWebhookResponse(raw, i, sourcingType);
+      });
+
+      navigate("/report", { state: { candidates: synthesisResults } });
     } catch (err: any) {
       console.error("Synthesis webhook error:", err);
       toast.error("Synthesis failed — please try again.");
@@ -46,20 +62,16 @@ const Index = () => {
 
       <main className="flex-1 p-6 max-w-7xl mx-auto w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {/* Left Column */}
           <EnvironmentPanel
             mandate={mandate}
             onMandateChange={setMandate}
           />
-
-          {/* Right Column */}
           <RosterPanel
             candidates={candidates}
             onCandidatesChange={setCandidates}
           />
         </div>
 
-        {/* Action Footer */}
         <div className="mt-8 flex justify-center">
           <Button
             variant="synthesis"
