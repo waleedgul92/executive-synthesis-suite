@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
 import {
   Select,
   SelectContent,
@@ -8,8 +9,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Users, Plus, Upload, X } from "lucide-react";
-import { useCallback } from "react";
+import { Users, Plus, X } from "lucide-react";
 
 export interface Candidate {
   id: string;
@@ -27,7 +27,7 @@ const RosterPanel = ({ candidates, onCandidatesChange }: RosterPanelProps) => {
   const addCandidate = () => {
     onCandidatesChange([
       ...candidates,
-      { id: crypto.randomUUID(), name: "", sourcingType: "", fileName: "", fileObject: undefined },
+      { id: crypto.randomUUID(), name: "", sourcingType: "", cvText: "" },
     ]);
   };
 
@@ -36,32 +36,10 @@ const RosterPanel = ({ candidates, onCandidatesChange }: RosterPanelProps) => {
     onCandidatesChange(candidates.filter((c) => c.id !== id));
   };
 
-  const updateCandidate = (id: string, field: keyof Candidate, value: string | File | undefined) => {
+  const updateCandidate = (id: string, field: keyof Candidate, value: string) => {
     onCandidatesChange(
       candidates.map((c) => (c.id === id ? { ...c, [field]: value } : c))
     );
-  };
-
-  const handleFileDrop = useCallback(
-    (id: string, e: React.DragEvent<HTMLDivElement>) => {
-      e.preventDefault();
-      const file = e.dataTransfer.files[0];
-      if (file?.type === "application/pdf") {
-        onCandidatesChange(
-          candidates.map((c) => (c.id === id ? { ...c, fileName: file.name, fileObject: file } : c))
-        );
-      }
-    },
-    [candidates, onCandidatesChange]
-  );
-
-  const handleFileSelect = (id: string, e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      onCandidatesChange(
-        candidates.map((c) => (c.id === id ? { ...c, fileName: file.name, fileObject: file } : c))
-      );
-    }
   };
 
   return (
@@ -116,24 +94,15 @@ const RosterPanel = ({ candidates, onCandidatesChange }: RosterPanelProps) => {
               </SelectContent>
             </Select>
 
-            <div
-              onDragOver={(e) => e.preventDefault()}
-              onDrop={(e) => handleFileDrop(candidate.id, e)}
-              className="relative flex flex-col items-center justify-center gap-2 py-5 rounded-lg border-2 border-dashed border-border bg-muted/20 hover:border-primary/30 hover:bg-muted/40 transition-colors cursor-pointer"
-              onClick={() =>
-                document.getElementById(`file-${candidate.id}`)?.click()
-              }
-            >
-              <Upload className="w-4 h-4 text-muted-foreground" />
-              <span className="text-xs text-muted-foreground">
-                {candidate.fileName || "Upload Executive Dossier / CV (PDF)"}
-              </span>
-              <input
-                id={`file-${candidate.id}`}
-                type="file"
-                accept=".pdf"
-                className="hidden"
-                onChange={(e) => handleFileSelect(candidate.id, e)}
+            <div className="space-y-1.5">
+              <label className="text-xs font-medium text-muted-foreground">
+                Executive Dossier / CV Text
+              </label>
+              <Textarea
+                placeholder="Paste the full professional history or candidate dossier here..."
+                value={candidate.cvText}
+                onChange={(e) => updateCandidate(candidate.id, "cvText", e.target.value)}
+                className="min-h-[300px] bg-background border-border text-sm placeholder:text-muted-foreground resize-none focus:border-primary/40"
               />
             </div>
           </div>
