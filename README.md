@@ -7,7 +7,7 @@ Apex Synthesis is an AI-driven **Decision Intelligence** pipeline designed to ev
 
 ---
 
-## 🏗️ Architecture
+##  Architecture
 
 The system utilises a modular **Agentic** architecture to ensure explainability and depth in every hiring decision.
 
@@ -30,7 +30,7 @@ The backend engine. A self-hosted **n8n** instance manages the data flow between
 
 ---
 
-## 🚀 Key Features
+##  Key Features
 
 | Feature | Description |
 |---|---|
@@ -68,7 +68,7 @@ ngrok http 5678
 
 ---
 
-## 🧠 The "Decision Intelligence" Difference
+##  The "Decision Intelligence" Difference
 
 Unlike standard HR Tech Tool that looks for **keywords**, Apex Synthesis looks for **Strategic Alignment**. The output doesn't just provide a score — it offers a narrative:
 
@@ -78,7 +78,7 @@ This allows a Board of Directors to make a choice based on their specific **risk
 
 ---
 
-## 🎥 Demo Instructions
+##  Demo Instructions
 
 1. Launch the **Apex Synthesis UI**.
 2. Input the  mandate.
