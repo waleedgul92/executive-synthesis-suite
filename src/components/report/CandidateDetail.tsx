@@ -292,20 +292,24 @@ const CandidateDetail = ({ candidate }: CandidateDetailProps) => {
 
         {/* Section 5: Human Action Required */}
         <section className="space-y-4">
-          {c.missingData.length > 0 && (
+          {c.missingData && (typeof c.missingData === 'string' ? c.missingData.length > 0 : c.missingData.length > 0) && (
             <div className="p-4 rounded-lg border border-amber-200 bg-amber-50/50">
               <div className="flex items-center gap-2 mb-3">
                 <MessageSquareWarning className="w-4 h-4 text-amber-600" />
                 <h4 className="text-xs font-semibold tracking-wider uppercase text-amber-700">Missing Data Warning</h4>
               </div>
-              <ul className="space-y-2">
-                {c.missingData.map((d, i) => (
-                  <li key={i} className="flex items-start gap-2 text-sm text-foreground/70">
-                    <span className="text-amber-500 mt-1">•</span>
-                    <span>{d}</span>
-                  </li>
-                ))}
-              </ul>
+              {typeof c.missingData === 'string' ? (
+                <p className="text-sm text-foreground/70">{c.missingData}</p>
+              ) : (
+                <ul className="space-y-2">
+                  {c.missingData.map((d, i) => (
+                    <li key={i} className="flex items-start gap-2 text-sm text-foreground/70">
+                      <span className="text-amber-500 mt-1">•</span>
+                      <span>{d}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
           )}
 
