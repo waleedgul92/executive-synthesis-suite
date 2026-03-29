@@ -7,7 +7,6 @@ import { Loader2, Zap } from "lucide-react";
 
 const Index = () => {
   const [mandate, setMandate] = useState("");
-  const [scenario, setScenario] = useState("");
   const [candidates, setCandidates] = useState<Candidate[]>([
     { id: crypto.randomUUID(), name: "", sourcingType: "", fileName: "" },
   ]);
@@ -28,9 +27,7 @@ const Index = () => {
           {/* Left Column */}
           <EnvironmentPanel
             mandate={mandate}
-            scenario={scenario}
             onMandateChange={setMandate}
-            onScenarioChange={setScenario}
           />
 
           {/* Right Column */}
