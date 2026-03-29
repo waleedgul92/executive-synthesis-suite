@@ -41,7 +41,7 @@ The backend engine. A self-hosted **n8n** instance manages the data flow between
 
 ---
 
-## 🛠️ Setup & Integration
+##  Setup & Integration
 
 ### Backend — n8n
 
