@@ -152,3 +152,10 @@ BS in Industrial Engineering
  
 Executive SummaryA seasoned, stabilizing leader with 25 years of experience in European automotive manufacturing. Specialist in high-quality steady-state operations and complex stakeholder alignment. Philosophy: sustainable growth requires total consensus between board, workers’ council, and local governments.Professional ExperienceLegacyMotors GmbH 2015 – PresentHead of European Production Operations• Manage a stable, highly tenured workforce of 12,000 across Germany and France.• Negotiated three major union contracts without strikes, prioritizing job security in exchange for
 phased automation.• Led 5-year hybrid-vehicle integration roadmap; consistently hit all quality and safety targets.LegacyMotors GmbH 2005 – 2015Plant Director, Munich Facility• Maintained highest quality-control rating in the global network for 7 consecutive years.• Fostered a loyal management team with a 2% turnover rate.EducationDiplom-Ingenieur (Mechanical Engineering), Technical University of Munich
+
+
+
+## Demo  Video
+
+
+https://github.com/user-attachments/assets/b9a20e2d-44a7-4fe3-93af-8448fe4c2733
